@@ -1,33 +1,37 @@
-"use client";
-import { useState } from "react";
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
       {/* ===== Top Nav ===== */}
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          <a href="#" className="font-bold text-xl tracking-tight">
+          <Link href="/" className="font-bold text-xl tracking-tight">
             StudyBuddy<span className="text-blue-600">AI</span>
-          </a>
+          </Link>
+
           <nav className="hidden md:flex gap-6 text-sm">
             <a href="#features" className="hover:text-blue-600">Features</a>
             <a href="#how" className="hover:text-blue-600">How it works</a>
             <a href="#pricing" className="hover:text-blue-600">Pricing</a>
             <a href="#faq" className="hover:text-blue-600">FAQ</a>
           </nav>
+
           <div className="flex gap-2">
-            <a
-              href="#pricing"
+            {/* Log in should go to the real auth route */}
+            <Link
+              href="/auth/signin"
               className="inline-flex items-center rounded-lg border px-3 py-2 text-sm hover:bg-gray-50"
             >
               Log in
-            </a>
-            <a
-              href="#pricing"
+            </Link>
+            {/* Get started should go to signup */}
+            <Link
+              href="/auth/signup"
               className="inline-flex items-center rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700"
             >
               Get started
-            </a>
+            </Link>
           </div>
         </div>
       </header>
@@ -48,12 +52,13 @@ export default function Home() {
                 test-takers, and busy professionals.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="#pricing"
+                {/* Trial CTA should go to signup */}
+                <Link
+                  href="/auth/signup"
                   className="inline-flex items-center rounded-xl bg-blue-600 px-5 py-3 font-medium text-white hover:bg-blue-700"
                 >
                   Start free 30-day trial
-                </a>
+                </Link>
                 <a
                   href="#features"
                   className="inline-flex items-center rounded-xl border px-5 py-3 font-medium hover:bg-gray-50"
@@ -65,6 +70,7 @@ export default function Home() {
                 Fair-use only • No cheating tools • Cancel anytime
               </p>
             </div>
+
             <div className="border rounded-2xl p-6 bg-white shadow-sm">
               <div className="text-sm font-semibold text-gray-700">What you can generate</div>
               <ul className="mt-3 grid grid-cols-2 gap-3 text-sm">
@@ -162,7 +168,7 @@ export default function Home() {
         </div>
       </section>
 
-            {/* ===== Pricing ===== */}
+      {/* ===== Pricing ===== */}
       <section id="pricing" className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="text-3xl font-bold">Simple pricing</h2>
         <p className="mt-2 text-gray-600">Cancel anytime. Usage caps reset monthly.</p>
@@ -226,8 +232,10 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#"
+
+              {/* Each tier should go to signup for now (Stripe comes next) */}
+              <Link
+                href="/auth/signup"
                 className={`mt-6 inline-flex w-full items-center justify-center rounded-xl px-4 py-2 font-medium ${
                   p.highlight
                     ? "bg-blue-600 text-white hover:bg-blue-700"
@@ -235,7 +243,7 @@ export default function Home() {
                 }`}
               >
                 Choose {p.name}
-              </a>
+              </Link>
             </div>
           ))}
         </div>
@@ -245,7 +253,6 @@ export default function Home() {
           (e.g., a chapter summary, study guide, flashcard deck, or OCR job).
         </p>
       </section>
-
 
       {/* ===== FAQ ===== */}
       <section id="faq" className="mx-auto max-w-6xl px-4 py-16">
@@ -297,9 +304,9 @@ export default function Home() {
           <div>
             <div className="font-semibold">Company</div>
             <ul className="mt-2 grid gap-1">
-              <li><a href="#" className="hover:text-blue-600">Terms of Use</a></li>
-              <li><a href="#" className="hover:text-blue-600">Privacy</a></li>
-              <li><a href="#" className="hover:text-blue-600">Fair Use Policy</a></li>
+              <li><Link href="/terms" className="hover:text-blue-600">Terms of Use</Link></li>
+              <li><Link href="/privacy" className="hover:text-blue-600">Privacy</Link></li>
+              <li><Link href="/fair-use" className="hover:text-blue-600">Fair Use Policy</Link></li>
             </ul>
           </div>
           <div>

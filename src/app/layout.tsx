@@ -1,13 +1,19 @@
 import "./globals.css";
+import type { Metadata } from "next";
+import { Toaster } from "../components/ui/sonner"; // ← RELATIVE import (no @/)
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-white text-gray-900">{children}</body>
+      <body>
+        {children}
+        <Toaster richColors position="top-right" closeButton />
+      </body>
     </html>
   );
 }
